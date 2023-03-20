@@ -11,9 +11,9 @@ export const Contacts = () => {
   const dispatch = useDispatch()
     return (
         <List>
-          {visibleContacts.map(({ id, name, number }) => {
+          {visibleContacts.map(({ id, name, phone }) => {
             return <Item key={id}>
-                {name}: <span>{number}</span>
+                {name}: <span>{phone}</span>
                 <Btn type="button" onClick={() =>dispatch(deleteContact(id))}>
                   Delete
                 </Btn>

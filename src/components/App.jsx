@@ -3,16 +3,17 @@ import { Phonebook } from './Phonebook/Phonebook';
 import { Contacts } from './Contacts/Contacts';
 import { Filter } from './Filter/Filter';
 import { Box } from './App.styled';
-import { useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
 import { useEffect } from 'react';
+import { useDispatch} from 'react-redux';
+import { fetchContacts } from 'redux/operations';
 
 export const App = () => {
   const dispatch = useDispatch();
   
   useEffect(() => {
     dispatch(fetchContacts());
-  }, [dispatch])
+  }, [dispatch]);
+  
   
 
   return (

@@ -6,7 +6,7 @@ import { addContact } from 'redux/operations';
 
 export const Phonebook = () => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const savedNamesList = contacts.map(contact =>contact.name)
@@ -16,10 +16,10 @@ export const Phonebook = () => {
     if (savedNamesList.includes(name)) {
       return alert(`Contact ${name} is already exist`);
     }
-    dispatch(addContact(name, number));
+    dispatch(addContact({ name, phone }));
 
     setName('');
-    setNumber('');
+    setPhone('');
     
   };
 
@@ -31,7 +31,7 @@ export const Phonebook = () => {
         setName(value);
         break;
       case 'number':
-        setNumber(value);
+        setPhone(value);
         break;
       
       default:
@@ -58,7 +58,7 @@ export const Phonebook = () => {
         <Input
           type="tel"
           name="number"
-          value={number}
+          value={phone}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           onChange={handleChange}
