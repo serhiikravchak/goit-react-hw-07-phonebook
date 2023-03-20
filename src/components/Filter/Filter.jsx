@@ -2,12 +2,12 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import { FilterInput, Label, Wrapper } from "./Filter.styled";
-import { getFilter } from "redux/selectors";
+import { selectFilter } from "redux/selectors";
 import { setFilter } from "redux/filterSlice";
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(getFilter);
+  const filter = useSelector(selectFilter);
 
   return (
     <Wrapper>

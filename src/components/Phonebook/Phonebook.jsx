@@ -1,14 +1,14 @@
 import { Form, Input, Label } from './Phonebook.styled';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
-import { addContacts } from 'redux/contactsSlice';
+import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 
 export const Phonebook = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const savedNamesList = contacts.map(contact =>contact.name)
 
   const handleSubmit = evt => {
@@ -16,11 +16,11 @@ export const Phonebook = () => {
     if (savedNamesList.includes(name)) {
       return alert(`Contact ${name} is already exist`);
     }
-    dispatch(addContacts(name, number));
+    dispatch(addContact(name, number));
 
     setName('');
     setNumber('');
-    evt.target.reset();
+    
   };
 
   const handleChange = e => {
